@@ -29,17 +29,17 @@ namespace SNAKE
 
         public void jogar()
         {
-            
-            iniciarMapa();
+
+            Mapa.Instance.iniciarMapa();
 
             player1 = new Personagem();
-            player1.desenhar();
+  
 
             while (jogando)
             {
-                Console.Clear();
+                Console.SetCursorPosition(0,0);
 
-                DesenharMapa();
+                Mapa.Instance.DesenharMapa();
 
                 player1.desenhar();
 
@@ -48,40 +48,7 @@ namespace SNAKE
                 player1.movimentar(tecla);
             }
         }
-
-        public void iniciarMapa()
-        {
-            mapa = new char[largura, altura];
-
-            for (int y = 0; y < altura; y++)
-            {
-                for (int x = 0; x < largura; x++)
-                {
-                    //ultima posição do vetor é tamanho - 1
-                    if (x == 0 || y == 0 || x == largura - 1 || y == altura - 1)
-                    {
-                        mapa[x, y] = '#';
-                    }
-                    else
-                    {
-                        mapa[x, y] = ' ';
-                    }
-                }
-            }
-        }
-
-
-        public void DesenharMapa()
-        {
-            for (int y = 0; y < altura; y++)
-            {
-                for (int x = 0; x < largura; x++)
-                {
-                    Console.Write(mapa[x, y]);
-                }
-                Console.WriteLine();
-            }
-        }
+     
 
     }
 }
