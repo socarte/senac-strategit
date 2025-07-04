@@ -9,15 +9,15 @@ namespace SNAKE
 {
     class Personagem
     {
-        private const char CABECA = '@';
+        private const char CABECA= '@';
         private const char CORPO = 'O';
-        public int playerX = 1;
-        public int playerY = 1;
+        public int playerX;
+        public int playerY;
 
-        char[,] mapa;
 
-        public Personagem(char[,] mapa) { 
-            this.mapa = mapa;
+        public Personagem() {
+            this.playerX = 1;
+            this.playerY = 1;
         }
 
         public void movimentar(ConsoleKey tecla)
@@ -41,14 +41,17 @@ namespace SNAKE
                     break;
             }
 
-            if (mapa[tempX, tempY] != '#')
+            if (tempX>0 && tempX<60 && tempY>0 && tempY<30)
             {
-                mapa[playerX, playerY] = ' ';
-                mapa[tempX, tempY] = '@';
                 playerX = tempX;
                 playerY = tempY;
             }
+        }
 
+        public void desenhar()
+        {
+            Console.SetCursorPosition(playerX, playerY);
+            Console.Write(CABECA);
         }
     }
 }
