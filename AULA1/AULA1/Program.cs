@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace SNAKE
+namespace CobrinhaDoLucas
 {
     class Program
     {
@@ -224,8 +224,8 @@ namespace SNAKE
                     cobra.RemoveAt(cobra.Count - 1);
                 }
 
-                // Pequeno delay para o jogo não ficar muito rápido - (1000 = 1 segundo)2BCCA2
-                System.Threading.Thread.Sleep(250);
+                // Pequeno delay para o jogo não ficar muito rápido
+                System.Threading.Thread.Sleep(100);
             }
 
             // Game over - mostra pontuação e verifica recordes
