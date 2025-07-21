@@ -11,33 +11,32 @@ namespace SNAKE
     {
         private const char CABECA= '@';
         private const char CORPO = 'O';
-        public int playerX;
-        public int playerY;
-
+        public vector2 pos = new vector2(1, 1);
 
         public Personagem() {
-            this.playerX = 1;
-            this.playerY = 1;
+           
         }
 
         public void movimentar(ConsoleKey tecla)
         {
-            int tempX = playerX;
-            int tempY = playerY;
+            int tempX = pos.x;
+            int tempY = pos.y;
+            int x = pos.x;
+            int y = pos.y;
 
             switch (tecla)
             {
                 case ConsoleKey.A:
-                    tempX--;
+                    x = pos.left;
                     break;
                 case ConsoleKey.D:
-                    tempX++;
+                    x = pos.right;
                     break;
                 case ConsoleKey.W:
-                    tempY--;
+                    y = pos.up;
                     break;
                 case ConsoleKey.S:
-                    tempY++;
+                    y = pos.down;
                     break;
             }
 
