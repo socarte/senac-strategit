@@ -14,8 +14,9 @@ namespace SNAKE
 
         public void StartGame()
         {
+            menu();
             // Aqui vai entrar o menu de vocês
-            jogar();
+
         }
 
 
@@ -25,6 +26,37 @@ namespace SNAKE
 
         public bool jogando = true;
         public Personagem player1;
+
+        public void menu()
+        {
+            Console.Clear();
+            Console.WriteLine("""
+                Bem-vindo ao jogo SNAKE!
+                começar(tecla enter)
+                créditos(tecla x)
+                sair(tecla esc)
+                 """);
+
+            var tecla = Console.ReadKey(true).Key;
+            switch (tecla)
+            {
+                case ConsoleKey.Enter:
+                    jogar();
+                    break;
+                case ConsoleKey.X:
+                    Console.WriteLine("Créditos: Desenvolvido por [lucas]");
+                    Console.ReadKey();
+                    menu();
+                    break;
+                case ConsoleKey.Escape:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    menu();
+                    break;
+            } 
+
+        }
 
 
         public void jogar()
