@@ -14,7 +14,7 @@ namespace SNAKE
         public vector2 pos = new vector2(1, 1);
 
         public Personagem() {
-           
+            Run();
         }
 
         public void movimentar(ConsoleKey tecla)

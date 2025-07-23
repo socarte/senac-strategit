@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    class GameManager
+    class GameManager:MonoBehaviour
     { 
         private GameManager () { }
         private static GameManager instance;
         public static GameManager Instance => instance ??= new GameManager();
 
-        public void StartGame()
+        public override void Start()
         {
             menu();
             // Aqui vai entrar o menu de vocês
@@ -24,18 +24,13 @@ namespace SNAKE
         public int largura = 60;
         public int altura = 30;
 
-        public bool jogando = true;
+        public bool jogando = false;
         public Personagem player1;
 
         public void menu()
         {
             Console.Clear();
-            Console.WriteLine("""
-                Bem-vindo ao jogo SNAKE!
-                começar(tecla enter)
-                créditos(tecla x)
-                sair(tecla esc)
-                 """);
+            Console.WriteLine("Bem-vindo ao jogo SNAKE! \n começar(tecla enter) \n créditos(tecla x) \n sair(tecla esc)");
 
             var tecla = Console.ReadKey(true).Key;
             switch (tecla)
@@ -46,39 +41,34 @@ namespace SNAKE
                 case ConsoleKey.X:
                     Console.WriteLine("Créditos: Desenvolvido por [lucas]");
                     Console.ReadKey();
-                    menu();
                     break;
                 case ConsoleKey.Escape:
                     Environment.Exit(0);
-                    break;
-                default:
-                    menu();
                     break;
             } 
 
         }
 
+        public override void Update()
+        {
+            if (jogando) {
+                Mapa.Instance.DesenharMapa();
+                player1.desenhar();
+            }
+            else
+            {
+                menu();
+            }
+        }
+
 
         public void jogar()
         {
-
-            Mapa.Instance.iniciarMapa();
+            Console.Clear();
+            jogando = true;
+            Mapa m = Mapa.Instance;
 
             player1 = new Personagem();
-  
-
-            while (jogando)
-            {
-                Console.SetCursorPosition(0,0);
-
-                Mapa.Instance.DesenharMapa();
-
-                player1.desenhar();
-
-                var tecla = Console.ReadKey(true).Key;
-
-                player1.movimentar(tecla);
-            }
         }
      
 

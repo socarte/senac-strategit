@@ -8,7 +8,7 @@ namespace SNAKE
 
         static void Main()
         {
-            GameManager.Instance.StartGame();
+            GameManager.Instance.Run();
         }
 
       

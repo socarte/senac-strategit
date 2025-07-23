@@ -26,10 +26,11 @@ namespace SNAKE
         public static int distance(vector2 a, vector2 b)
         {
             return (
-                (int) Math.Sqrt(
+                (int)Math.Sqrt(
                     (a.x = b.x) * (a.x = b.x) +
                     (a.y = b.y) * (a.y = b.y)
-                    )
+                )
+            );
         }
     }
     

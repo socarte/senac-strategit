@@ -8,7 +8,9 @@ namespace SNAKE
 {
     class Mapa:MonoBehaviour
     {
-        private Mapa() { }
+        private Mapa() {
+            Run();
+        }
         public static Mapa Instance => instance ??= new Mapa();
         private static Mapa instance;
        
@@ -36,6 +38,8 @@ namespace SNAKE
         }
         public void DesenharMapa()
         {
+            Console.SetCursorPosition(0, 0);
+
             for (int y = 0; y < altura; y++)
             {
                 for (int x = 0; x < largura; x++)
@@ -49,12 +53,6 @@ namespace SNAKE
         public override void Start()
         {
             iniciarMapa();
-        }
-
-        public override void Update()
-        {
-            DesenharMapa();
-            GameManager.Instance.player1.desenhar();
         }
 
 
