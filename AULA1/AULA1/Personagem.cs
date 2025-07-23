@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 namespace SNAKE
 
 {
-    class Personagem : MonoBehaviour
+     public class Personagem : MonoBehaviour
     {
         private const char CABECA= '@';
-        private const char CORPO = 'O';
-        public vector2 pos = new vector2(1, 1);
+        
+        public Vector2 pos = new Vector2(1, 1);
         public ConsoleKey direcao = ConsoleKey.D;
+
+        private Cauda cauda;
 
         public Personagem() {
             Run();
@@ -51,6 +53,7 @@ namespace SNAKE
             {
                 Mapa.Instance.mapa[x, y] = ' ';
                 Mapa.Instance.gerarComida();
+                cauda = new Cauda(pos);
             }
 
         }
@@ -67,6 +70,10 @@ namespace SNAKE
             movimentar();
             Mapa.Instance.DesenharMapa();
             desenhar();
+            if (cauda != null)
+            {
+                cauda.atualiza(pos);
+            }
         }
 
     }

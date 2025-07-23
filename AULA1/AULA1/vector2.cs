@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    public class vector2
+    public class Vector2
     { 
         public int  x;
         public int y;
         
-        public vector2(int x, int y)
+        public Vector2(int x, int y)
         {
             this.x = x;
             this.y = y;
@@ -23,7 +23,7 @@ namespace SNAKE
         public int left => this.x -= 1;
         public int right => this.x += 1;
         
-        public static int distance(vector2 a, vector2 b)
+        public static int distance(Vector2 a, Vector2 b)
         {
             return (
                 (int)Math.Sqrt(
