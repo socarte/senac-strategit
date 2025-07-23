@@ -52,8 +52,10 @@ namespace SNAKE
         public override void Update()
         {
             if (jogando) {
-                Mapa.Instance.DesenharMapa();
-                player1.desenhar();
+                
+               
+                var tecla = Console.ReadKey(true).Key;
+                player1.direcao = tecla;
             }
             else
             {

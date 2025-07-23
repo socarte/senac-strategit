@@ -35,6 +35,9 @@ namespace SNAKE
                     }
                 }
             }
+
+            gerarComida();
+
         }
         public void DesenharMapa()
         {
@@ -55,6 +58,13 @@ namespace SNAKE
             iniciarMapa();
         }
 
+        public void gerarComida()
+        {
+            Random r = new Random();
+            int x = r.Next(1, largura - 1);
+            int y = r.Next(1, altura - 1);
+            mapa[x, y] = '*'; // Comida
+        }
 
     }
 }

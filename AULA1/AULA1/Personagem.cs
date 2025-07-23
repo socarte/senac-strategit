@@ -12,19 +12,20 @@ namespace SNAKE
         private const char CABECA= '@';
         private const char CORPO = 'O';
         public vector2 pos = new vector2(1, 1);
+        public ConsoleKey direcao = ConsoleKey.D;
 
         public Personagem() {
             Run();
         }
 
-        public void movimentar(ConsoleKey tecla)
+        public void movimentar()
         {
             int tempX = pos.x;
             int tempY = pos.y;
             int x = pos.x;
             int y = pos.y;
 
-            switch (tecla)
+            switch (direcao)
             {
                 case ConsoleKey.A:
                     x = pos.left;
@@ -42,9 +43,16 @@ namespace SNAKE
 
             if (! (tempX>0 && tempX<Mapa.Instance.largura && tempY>0 && tempY<Mapa.Instance.altura))
             {
-                pos.x = tempX;
-                pos.y = tempY;
+                GameManager.Instance.jogando = false;
+                Mapa.Instance.Stop();
+                Stop();
+
+            }else if (Mapa.Instance.mapa[x, y] == '*')
+            {
+                Mapa.Instance.mapa[x, y] = ' ';
+                Mapa.Instance.gerarComida();
             }
+
         }
 
         public void desenhar()
@@ -55,8 +63,10 @@ namespace SNAKE
 
         public override void Update()
         {
-            var tecla = Console.ReadKey(true).Key;
-            movimentar(tecla);
+           
+            movimentar();
+            Mapa.Instance.DesenharMapa();
+            desenhar();
         }
 
     }
