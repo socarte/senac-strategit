@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    class Mapa
+    class Mapa:MonoBehaviour
     {
         private Mapa() { }
         public static Mapa Instance => instance ??= new Mapa();
@@ -45,5 +45,18 @@ namespace SNAKE
                 Console.WriteLine();
             }
         }
+
+        public override void Start()
+        {
+            iniciarMapa();
+        }
+
+        public override void Update()
+        {
+            DesenharMapa();
+            GameManager.Instance.player1.desenhar();
+        }
+
+
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SNAKE
 
 {
-    class Personagem
+    class Personagem : MonoBehaviour
     {
         private const char CABECA= '@';
         private const char CORPO = 'O';
@@ -40,17 +40,24 @@ namespace SNAKE
                     break;
             }
 
-            if (tempX>0 && tempX<60 && tempY>0 && tempY<30)
+            if (! (tempX>0 && tempX<Mapa.Instance.largura && tempY>0 && tempY<Mapa.Instance.altura))
             {
-                playerX = tempX;
-                playerY = tempY;
+                pos.x = tempX;
+                pos.y = tempY;
             }
         }
 
         public void desenhar()
         {
-            Console.SetCursorPosition(playerX, playerY);
+            Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CABECA);
         }
+
+        public override void Update()
+        {
+            var tecla = Console.ReadKey(true).Key;
+            movimentar(tecla);
+        }
+
     }
 }
