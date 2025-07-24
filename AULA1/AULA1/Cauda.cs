@@ -15,24 +15,37 @@ namespace SNAKE
         public Cauda(Vector2 pos)
         {
             this.pos = pos;
-            
-           
+
+
         }
 
-        public  void atualiza(Vector2 pos)
+        public void atualiza(Vector2 novapos)
         {
-            if (proximo!= null)
+            if (proximo != null)
             {
                 proximo.atualiza(this.pos);
             }
-            this.pos = pos;
-            desenhar();
+
+            this.pos = novapos;
         }
 
-        public void desenhar()
+        public void Crescer(Vector2 novaPos)
+        {
+            if (proximo == null)
+            {
+                proximo = new Cauda(novaPos); // adiciona novo segmento
+            }
+            else
+            {
+                proximo.Crescer(novaPos); // vai até o final e adiciona
+            }
+        }
+
+        public void Desenhar()
         {
             Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CORPO);
+            proximo.Desenhar();
         }
     }
 }

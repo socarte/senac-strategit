@@ -24,6 +24,9 @@ namespace SNAKE
 
         public void movimentar()
         {
+            // Atualiza cauda antes de mudar a posição da cabeça
+            cauda.atualiza(pos);
+
             int tempX = pos.x;
             int tempY = pos.y;
             int x = pos.x;
@@ -75,8 +78,15 @@ namespace SNAKE
             if (cauda != null)
             {
                 cauda.atualiza(pos);
-            }
+            } void Atualizar()
+        {
+            movimentar();
+            Mapa.Instance.DesenharMapa();
+            desenhar(); // desenha a cabeça
+            cauda.Desenhar(); // desenha a cauda (se existir)
         }
 
     }
+
+}
 }
