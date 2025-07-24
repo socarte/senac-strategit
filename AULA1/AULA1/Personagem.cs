@@ -16,8 +16,10 @@ namespace SNAKE
 
         private Cauda cauda;
 
-        public Personagem() {
+        public Personagem()
+        {
             Run();
+            cauda = new Cauda(pos); // inicia com um pedaço de cauda na posição da cabeça
         }
 
         public void movimentar()
