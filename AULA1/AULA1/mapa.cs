@@ -12,7 +12,7 @@ namespace SNAKE
             Run();
         }
         public static Mapa Instance => instance ??= new Mapa();
-        private static Mapa instance;
+        private static Mapa? instance;
        
         public char[,] mapa;
         public int largura = 60;
@@ -39,7 +39,7 @@ namespace SNAKE
             gerarComida();
 
         }
-        public void DesenharMapa()
+        public void Draw()
         {
             Console.SetCursorPosition(0, 0);
 

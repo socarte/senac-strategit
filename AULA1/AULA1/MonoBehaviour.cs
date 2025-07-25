@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    public class MonoBehaviour
+    public abstract class MonoBehaviour
     {
         private Thread t;
         private bool ativo = true;
 
+        public bool visible = false;
+        public bool Input = false;
         public void Run()
         {
             Awake();
@@ -43,6 +45,10 @@ namespace SNAKE
         public virtual void Update() { }
         public virtual void LateUpdate() { }
         public virtual void OnDestroy() { }
+
+        public abstract void Draw();
+
+
 
     }
 }

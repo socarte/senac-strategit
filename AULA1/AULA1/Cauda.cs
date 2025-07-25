@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    public class Cauda
+    public class cauda
     {
         private Vector2 pos;
-        private Cauda proximo;
+        private cauda proximo;
         private const char CORPO = 'O';
 
-        public Cauda(Vector2 pos)
+        public cauda(Vector2 pos)
         {
             this.pos = pos;
 
@@ -33,7 +33,7 @@ namespace SNAKE
         {
             if (proximo == null)
             {
-                proximo = new Cauda(novaPos); // adiciona novo segmento
+                proximo = new cauda(novaPos); // adiciona novo segmento
             }
             else
             {

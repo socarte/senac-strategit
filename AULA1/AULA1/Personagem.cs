@@ -14,12 +14,12 @@ namespace SNAKE
         public Vector2 pos = new Vector2(1, 1);
         public ConsoleKey direcao = ConsoleKey.D;
 
-        private Cauda cauda;
+        private cauda cauda;
 
         public Personagem()
         {
             Run();
-            cauda = new Cauda(pos); // inicia com um pedaço de cauda na posição da cabeça
+            cauda = new cauda(pos); // inicia com um pedaço de cauda na posição da cabeça
         }
 
         public void movimentar()
@@ -58,12 +58,12 @@ namespace SNAKE
             {
                 Mapa.Instance.mapa[x, y] = ' ';
                 Mapa.Instance.gerarComida();
-                cauda = new Cauda(pos);
+                cauda = new cauda(pos);
             }
 
         }
 
-        public void desenhar()
+        public void Draw()
         {
             Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CABECA);
@@ -73,20 +73,13 @@ namespace SNAKE
         {
            
             movimentar();
-            Mapa.Instance.DesenharMapa();
-            desenhar();
+            
+            Draw();
             if (cauda != null)
             {
                 cauda.atualiza(pos);
-            } void Atualizar()
-        {
-            movimentar();
-            Mapa.Instance.DesenharMapa();
-            desenhar(); // desenha a cabeça
-            cauda.Desenhar(); // desenha a cauda (se existir)
+            }
         }
 
     }
-
-}
 }

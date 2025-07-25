@@ -6,18 +6,11 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    public class Vector2
+    public class Vector2(int x, int y)
     { 
-        public int  x;
-        public int y;
-        
-        public Vector2(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
+        public int x = x;
+        public int y = y;
 
-
-        }
         public int up => this.y -= 1;
         public int down => this.y += 1;
         public int left => this.x -= 1;
