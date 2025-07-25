@@ -22,11 +22,15 @@ namespace SNAKE
             switch (tecla)
             {
                 case ConsoleKey.Enter:
+                    GameManager.Instance.map = Mapa.Instance;
+                    GameManager.Instance.map.visible= true;
                     GameManager.Instance.map.visible = true;
+                    GameManager.Instance.player1 = new Personagem();
                     GameManager.Instance.player1.visible = true;
                     GameManager.Instance.player1.Input = true;
                     GameManager.Instance.mobi.Input = false;
                     GameManager.Instance.mobi.visible = false;
+
                     break;
                 case ConsoleKey.X:
                     Console.WriteLine("Créditos: Desenvolvido por [lucas]");
@@ -46,7 +50,7 @@ namespace SNAKE
 
 
 
-
+        
 
 
 

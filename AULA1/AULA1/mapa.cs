@@ -17,7 +17,7 @@ namespace SNAKE
         public char[,] mapa;
         public int largura = 60;
         public int altura = 30;
-       
+
         public void iniciarMapa()
         {
             mapa = new char[largura, altura];
@@ -39,7 +39,9 @@ namespace SNAKE
             gerarComida();
 
         }
-        public void Draw()
+
+        //nivel | escrita | retorno | nomeDaFuncao() { a funcao em si }
+        public override void Draw()
         {
             Console.SetCursorPosition(0, 0);
 

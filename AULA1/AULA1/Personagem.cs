@@ -51,6 +51,10 @@ namespace SNAKE
             if (! (tempX>0 && tempX<Mapa.Instance.largura && tempY>0 && tempY<Mapa.Instance.altura))
             {
                 GameManager.Instance.jogando = false;
+                GameManager.Instance.mobi.Input = true;
+                GameManager.Instance.mobi.visible = true;
+                GameManager.Instance.player1.visible = false;
+                GameManager.Instance.player1.Input = false;
                 Mapa.Instance.Stop();
                 Stop();
 
@@ -63,22 +67,25 @@ namespace SNAKE
 
         }
 
-        public void Draw()
+        public  override void Draw()
         {
             Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CABECA);
-        }
-
-        public override void Update()
-        {
-           
             movimentar();
-            
-            Draw();
             if (cauda != null)
             {
                 cauda.atualiza(pos);
             }
+        }
+
+        public override void Update()
+        {
+            if (!Input) return;
+            
+            direcao = Console.ReadKey(true).Key;
+
+            
+
         }
 
     }
