@@ -24,9 +24,6 @@ namespace SNAKE
 
         public void movimentar()
         {
-            // Atualiza cauda antes de mudar a posição da cabeça
-            cauda.atualiza(pos);
-
             int tempX = pos.x;
             int tempY = pos.y;
             int x = pos.x;
@@ -50,20 +47,19 @@ namespace SNAKE
 
             if (! (tempX>0 && tempX<Mapa.Instance.largura && tempY>0 && tempY<Mapa.Instance.altura))
             {
-                GameManager.Instance.jogando = false;
-                Mapa.Instance.Stop();
-                Stop();
+               /** voltar o menu */
 
             }else if (Mapa.Instance.mapa[x, y] == '*')
             {
                 Mapa.Instance.mapa[x, y] = ' ';
                 Mapa.Instance.gerarComida();
                 cauda = new cauda(pos);
+          
             }
 
         }
 
-        public void Draw()
+        public override void Draw()
         {
             Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CABECA);
@@ -74,7 +70,6 @@ namespace SNAKE
            
             movimentar();
             
-            Draw();
             if (cauda != null)
             {
                 cauda.atualiza(pos);

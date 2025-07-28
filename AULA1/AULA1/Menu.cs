@@ -12,21 +12,28 @@ namespace SNAKE
         {
             Run();
         }
+        private static Menu instance;
         public static Menu Instance => instance ??= new Menu();
 
-        private static Menu instance;
+        
 
-        public void Update()
+        public  override void Update()
         {
             var tecla = Console.ReadKey(true).Key;
             switch (tecla)
             {
                 case ConsoleKey.Enter:
+                    GameManager.Instance.mobi.visible = false;
+                    GameManager.Instance.mobi.Input = false;
+
+                    GameManager.Instance.map = Mapa.Instance;
                     GameManager.Instance.map.visible = true;
+                    GameManager.Instance.map.Input = true;
+
+                    GameManager.Instance.player1 = new Personagem();
                     GameManager.Instance.player1.visible = true;
                     GameManager.Instance.player1.Input = true;
-                    GameManager.Instance.mobi.Input = false;
-                    GameManager.Instance.mobi.visible = false;
+                   
                     break;
                 case ConsoleKey.X:
                     Console.WriteLine("Créditos: Desenvolvido por [lucas]");

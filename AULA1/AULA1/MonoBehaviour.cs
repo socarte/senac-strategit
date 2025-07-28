@@ -26,7 +26,7 @@ namespace SNAKE
                     {
                         Update();
                         LateUpdate();
-                        Thread.Sleep(50);
+                        Thread.Sleep(200);
                     }
                 }
             );

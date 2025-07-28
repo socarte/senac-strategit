@@ -12,14 +12,15 @@ namespace SNAKE
             Run();
         }
         public static Mapa Instance => instance ??= new Mapa();
-        private static Mapa? instance;
+        private static Mapa instance;
        
         public char[,] mapa;
         public int largura = 60;
         public int altura = 30;
        
-        public void iniciarMapa()
-        {
+
+
+        public override void Start(){
             mapa = new char[largura, altura];
             for (int y = 0; y < altura; y++)
             {
@@ -37,10 +38,19 @@ namespace SNAKE
             }
 
             gerarComida();
-
         }
-        public void Draw()
+
+        public override void Update()
         {
+            ConsoleKey tecla = Console.ReadKey(true).Key;
+
+            GameManager.Instance.player1.direcao = tecla;
+        }
+
+
+        public override void Draw()
+        {
+            
             Console.SetCursorPosition(0, 0);
 
             for (int y = 0; y < altura; y++)
@@ -53,11 +63,7 @@ namespace SNAKE
             }
         }
 
-        public override void Start()
-        {
-            iniciarMapa();
-        }
-
+        
         public void gerarComida()
         {
             Random r = new Random();

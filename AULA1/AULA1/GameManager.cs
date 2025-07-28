@@ -9,10 +9,12 @@ namespace SNAKE
 {
     class GameManager:MonoBehaviour
     {
-        private GameManager() { }
+        private GameManager() 
+        {
+        }
+
         private static GameManager? instance;
         public static GameManager Instance => instance ??= new GameManager();
-
 
 
         public bool jogando = false;
@@ -29,9 +31,9 @@ namespace SNAKE
         
         public override void Draw()
         {
-            if (map.visible) map.Draw();
-            if(player1.visible) player1.Draw();
-            if (mobi.visible) mobi.Draw();
+            if (map != null && map.visible) map.Draw();
+            if (player1 != null && player1.visible) player1.Draw();
+            if (mobi != null && mobi.visible) mobi.Draw();
         }
 
         public override void Start()

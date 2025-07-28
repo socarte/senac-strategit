@@ -15,9 +15,15 @@ namespace SNAKE
         public cauda(Vector2 pos)
         {
             this.pos = pos;
+            
 
 
         }
+        public void Draw()
+        {
+            proximo.Draw();
+        }
+       
 
         public void atualiza(Vector2 novapos)
         {

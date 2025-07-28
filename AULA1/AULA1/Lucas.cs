@@ -8,6 +8,7 @@ namespace SNAKE
 
         static void Main()
         {
+            Console.CursorVisible = false;
             GameManager.Instance.Run();
         }
 
