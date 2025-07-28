@@ -63,6 +63,11 @@ namespace SNAKE
         {
             Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CABECA);
+            movimentar();
+            if (cauda != null)
+            {
+                cauda.atualiza(pos);
+            }
         }
 
         public override void Update()
