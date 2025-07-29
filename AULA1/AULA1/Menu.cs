@@ -19,16 +19,17 @@ namespace SNAKE
 
         public  override void Update()
         {
+            if (!Input) return;
+
             var tecla = Console.ReadKey(true).Key;
             switch (tecla)
             {
                 case ConsoleKey.Enter:
-                    GameManager.Instance.mobi.visible = false;
-                    GameManager.Instance.mobi.Input = false;
+                    visible = false;
+                    Input = false;
 
                     GameManager.Instance.map = Mapa.Instance;
                     GameManager.Instance.map.visible = true;
-                    GameManager.Instance.map.Input = true;
 
                     GameManager.Instance.player1 = new Personagem();
                     GameManager.Instance.player1.visible = true;

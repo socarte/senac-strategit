@@ -24,9 +24,14 @@ namespace SNAKE
         public Mapa map;
 
 
+        
+
         public override void Update()
         {
-            Draw();
+            
+                Draw();
+                
+            
         }
         
         public override void Draw()

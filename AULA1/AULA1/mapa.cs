@@ -40,13 +40,6 @@ namespace SNAKE
             gerarComida();
         }
 
-        public override void Update()
-        {
-            ConsoleKey tecla = Console.ReadKey(true).Key;
-
-            GameManager.Instance.player1.direcao = tecla;
-        }
-
 
         public override void Draw()
         {

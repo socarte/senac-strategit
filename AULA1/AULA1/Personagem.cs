@@ -14,12 +14,12 @@ namespace SNAKE
         public Vector2 pos = new Vector2(1, 1);
         public ConsoleKey direcao = ConsoleKey.D;
 
-        private cauda cauda;
+        private Cauda cauda;
+        private bool crescer = false;
 
         public Personagem()
         {
             Run();
-            cauda = new cauda(pos); // inicia com um pedaço de cauda na posição da cabeça
         }
 
         public void movimentar()
@@ -45,40 +45,65 @@ namespace SNAKE
                     break;
             }
 
-            if (! (tempX>0 && tempX<Mapa.Instance.largura && tempY>0 && tempY<Mapa.Instance.altura))
+            if (crescer)
             {
-               /** voltar o menu */
+                crescer = false;
 
-            }else if (Mapa.Instance.mapa[x, y] == '*')
+                if (cauda == null)
+                {
+                    cauda = new Cauda(new Vector2(tempX, tempY));
+                }
+                else
+                {
+                    cauda.Crescer(new Vector2(tempX, tempY));
+                }
+            }
+            else
+            {
+                if (cauda != null)
+                {
+                    cauda.atualiza(new Vector2(tempX, tempY));
+                }
+            }
+
+            if (! (tempX>0 && tempX<Mapa.Instance.largura-1 && tempY>0 && tempY<Mapa.Instance.altura-1))
+            {
+                visible = false;
+                Input = false;
+
+                GameManager.Instance.map.visible = false;
+
+                GameManager.Instance.mobi.visible = true;
+                GameManager.Instance.mobi.Input = true;
+
+            }
+            else if (Mapa.Instance.mapa[x, y] == '*')
             {
                 Mapa.Instance.mapa[x, y] = ' ';
                 Mapa.Instance.gerarComida();
-                cauda = new cauda(pos);
-          
-            }
 
+                crescer = true;
+            }
         }
 
         public override void Draw()
         {
+            movimentar();
+            
             Console.SetCursorPosition(pos.x, pos.y);
             Console.Write(CABECA);
-            movimentar();
             if (cauda != null)
             {
-                cauda.atualiza(pos);
+                cauda.Draw();
             }
         }
 
         public override void Update()
         {
-           
+            if (!Input) return;
+
+            direcao = Console.ReadKey(true).Key;
             movimentar();
-            
-            if (cauda != null)
-            {
-                cauda.atualiza(pos);
-            }
         }
 
     }

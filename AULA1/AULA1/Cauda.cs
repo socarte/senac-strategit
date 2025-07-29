@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SNAKE
 {
-    public class cauda
+    public class Cauda
     {
         private Vector2 pos;
-        private cauda proximo;
+        private Cauda proximo;
         private const char CORPO = 'O';
 
-        public cauda(Vector2 pos)
+        public Cauda(Vector2 pos)
         {
             this.pos = pos;
             
@@ -21,7 +21,12 @@ namespace SNAKE
         }
         public void Draw()
         {
-            proximo.Draw();
+            Console.SetCursorPosition(pos.x, pos.y);
+            Console.Write(CORPO);
+            if (proximo != null)
+            {
+                proximo.Draw();
+            }
         }
        
 
@@ -35,23 +40,19 @@ namespace SNAKE
             this.pos = novapos;
         }
 
-        public void Crescer(Vector2 novaPos)
+        public void Crescer(Vector2 novapos)
         {
             if (proximo == null)
             {
-                proximo = new cauda(novaPos); // adiciona novo segmento
+                proximo = new Cauda(this.pos); // adiciona novo segmento
             }
             else
             {
-                proximo.Crescer(novaPos); // vai até o final e adiciona
+                proximo.Crescer(this.pos); // vai até o final e adiciona
             }
+
+            this.pos = novapos;
         }
 
-        public void Desenhar()
-        {
-            Console.SetCursorPosition(pos.x, pos.y);
-            Console.Write(CORPO);
-            proximo.Desenhar();
-        }
     }
 }
