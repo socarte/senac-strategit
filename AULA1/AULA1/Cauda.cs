@@ -54,5 +54,17 @@ namespace SNAKE
             this.pos = novapos;
         }
 
+        public bool Colidir(Vector2 novapos)
+        {
+            if (this.pos.x == novapos.x && this.pos.y == novapos.y)
+            {
+                return true; // colidiu com a cauda
+            }
+            if (proximo != null)
+            {
+                return proximo.Colidir(novapos); // verifica na próxima cauda
+            }
+            return false; // não colidiu
+        }
     }
 }

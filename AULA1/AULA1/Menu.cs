@@ -37,8 +37,14 @@ namespace SNAKE
                    
                     break;
                 case ConsoleKey.X:
-                    Console.WriteLine("Créditos: Desenvolvido por [lucas]");
-                    Console.ReadKey();
+                    visible = false;
+                    Input = false;
+                    Console.Clear();
+                    Console.WriteLine("Créditos: Desenvolvido por [lucas luis]");
+                    Console.WriteLine("Pressione qualquer tecla para voltar ao menu principal.");
+                    Console.ReadKey(true);
+                    visible = true;
+                    Input = true;
                     break;
                 case ConsoleKey.Escape:
                     Environment.Exit(0);

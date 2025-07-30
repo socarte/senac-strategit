@@ -66,7 +66,8 @@ namespace SNAKE
                 }
             }
 
-            if (! (tempX>0 && tempX<Mapa.Instance.largura-1 && tempY>0 && tempY<Mapa.Instance.altura-1))
+
+            if ((! (tempX>0 && tempX<Mapa.Instance.largura-1 && tempY>0 && tempY<Mapa.Instance.altura-1)) || (cauda != null && cauda.Colidir(pos)) )
             {
                 visible = false;
                 Input = false;
